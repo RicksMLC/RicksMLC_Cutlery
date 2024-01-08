@@ -1,0 +1,11 @@
+version=1.0
+title=Rick's MLC Cutlery
+description= Use cutlery, you savage.
+description= Automatically use cutlery from a backpack and put back when finished eating.
+description= Also gives a small bit of happiness when eating like civilised person.
+description= 
+description= Bonus feature: Eating a bowl of beans with a happiness bonus is now possible. Food doesn't go cold mid-eating. 
+description= 
+description= Many thanks to @cruel_moose for his suggestions and feedback in making this mod.
+tags=Build 41
+visibility=public

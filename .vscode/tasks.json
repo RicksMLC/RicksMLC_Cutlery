@@ -1,0 +1,60 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "RELEASE: Copy mod to Workshop for release",
+            "type": "shell",
+            "command": "xcopy",
+            "args": [
+                "${env:USERPROFILE}\\Documents\\Ricks Mid Life Crisis\\ProjectZomboid Mods\\RicksMLC_Cutlery\\Workshop Files",
+                "${env:USERPROFILE}\\Zomboid\\Workshop\\RicksMLC_Cutlery\\",
+                "/s",
+                "/e",
+                "/y",
+                "/d",
+                "/exclude:.vscode\\exclude.txt"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+
+        {
+            "label": "CLEAN: Delete test from mod Workshop",
+            "type": "shell",
+            "command": "del",
+            "args": [
+                "${env:USERPROFILE}\\Zomboid\\Workshop\\RicksMLC_Cutlery\\Contents\\mods\\RicksMLC_Cutlery\\media\\lua\\client\\Tests"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        },
+
+        // Copy for test
+        {
+            "label": "TEST: Copy Test lua Workshop for test",
+            "type": "shell",
+            "command": "xcopy",
+            "args": [
+                "${env:USERPROFILE}\\Documents\\Ricks Mid Life Crisis\\ProjectZomboid Mods\\RicksMLC_Cutlery\\Workshop Files",
+                "${env:USERPROFILE}\\Zomboid\\Workshop\\RicksMLC_Cutlery",
+                "/s",
+                "/e",
+                "/y",
+                "/d"
+            ],
+            "problemMatcher": [],
+            "group": {
+                "kind": "build",
+                "isDefault": false
+            }
+        }
+    ]
+}
