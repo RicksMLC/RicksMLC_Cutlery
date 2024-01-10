@@ -20,6 +20,15 @@ local function AdjustUnhappiness(adjustment, limit)
 	return {"Unhappiness", newValue}
 end
 
+local function isCanUseCutlery(item)
+	local eatType = item:getEatType()
+	return item:getEatType() == "can" 
+		or item:getEatType() == "candrink"
+		or item:getEatType() == "2hand" 
+		or item:getEatType() == "plate" 
+		or item:getEatType() == "2handbowl"
+end
+
 local getFromBackPack = false
 local origContainer = nil
 local usingCutlery = false
@@ -32,8 +41,10 @@ function ISEatFoodAction:start()
 	local fork = playerInv:getFirstTag("Fork") or playerInv:getFirstType("Base.Fork");
 	origHeat = self.item:getHeat()
 
-	if spoon or fork then
-		usingCutlery = self.item:getEatType() == "can" or self.item:getEatType() == "candrink" or self.item:getEatType() == "2hand" or self.item:getEatType() == "plate" or self.item:getEatType() == "2handbowl"
+	local canUseCutlery = isCanUseCutlery(self.item)
+	if spoon or fork or not canUseCutlery then
+		-- Run the default behaviour
+		usingCutlery = canUseCutlery
 		overrideEatFoodStart(self)
 		return
 	end
